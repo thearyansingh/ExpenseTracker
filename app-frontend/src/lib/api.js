@@ -2,8 +2,10 @@ import axios from "axios";
 import { tokenStore } from "./auth-token";
 
 const defaultBaseURL = () => {
+  // Use hosted backend by default (production).
+  // Keep localhost:5000 for local development when running on localhost.
   if (typeof window === "undefined") {
-    return "http://localhost:5000";
+    return "https://expensetracker-5fma.onrender.com";
   }
 
   const host = window.location.hostname;
@@ -11,7 +13,8 @@ const defaultBaseURL = () => {
     return "http://localhost:5000";
   }
 
-  return `${window.location.protocol}//${host}:5000`;
+  // Non-localhost browsers should talk to the hosted backend
+  return "https://expensetracker-5fma.onrender.com";
 };
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL || defaultBaseURL();
