@@ -18,10 +18,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   process.env.CLIENT_URL,
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-  "http://localhost:3000",
-  "http://192.168.1.44:3000"
+  "https://expense-tracker-nine-gamma-52.vercel.app"
 ];
 
 app.use(cors({
